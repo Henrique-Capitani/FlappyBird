@@ -167,6 +167,56 @@ def desenhar_tela(tela, passaros, canos, chao, pontos):
     chao.desenhar(tela)
     pygame.display.update()
 
+
+# Tela de Start
+def tela_inicio(tela):
+        fonte = pygame.font.SysFont('VCR OSD Mono', 40)
+        rodando = True
+        while rodando:
+            tela.blit(IMAGEM_BACKGROUND, (0, 0))
+            texto = fonte.render("Pressione ESPAÇO para começar", True, (255, 255, 255))
+            tela.blit(texto, ((TELA_LARGURA - texto.get_width()) // 2, TELA_ALTURA // 2))
+            pygame.display.update()
+
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if evento.type == pygame.KEYDOWN:
+                    if evento.key == pygame.K_SPACE:
+                        rodando = False
+
+
+# Tela de perda
+def tela_game_over(tela, pontos):
+    fonte_grande = pygame.font.SysFont('VCR OSD Mono', 50)
+    fonte_pequena = pygame.font.SysFont('VCR OSD Mono', 30)
+    rodando = True
+
+    while rodando:
+        tela.blit(IMAGEM_BACKGROUND, (0, 0))
+
+        texto1 = fonte_grande.render("Você perdeu!", True, (255, 0, 0))
+        texto2 = fonte_pequena.render(f"Pontuação final: {pontos}", True, (255, 255, 255))
+        texto3 = fonte_pequena.render("Pressione ENTER para jogar novamente", True, (255, 255, 255))
+
+        tela.blit(texto1, ((TELA_LARGURA - texto1.get_width()) // 2, TELA_ALTURA // 2 - 100))
+        tela.blit(texto2, ((TELA_LARGURA - texto2.get_width()) // 2, TELA_ALTURA // 2 - 40))
+        tela.blit(texto3, ((TELA_LARGURA - texto3.get_width()) // 2, TELA_ALTURA // 2 + 20))
+
+        pygame.display.update()
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_RETURN:
+                    rodando = False
+
+
+
+
 def main():
     passaros = [Passaro(230, 350)]
     chao = Chao(730)
@@ -218,10 +268,20 @@ def main():
             if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
                 passaros.pop(i)
 
+        if len(passaros) == 0:
+            tela_game_over(tela, pontos)
+            return
+
+
 
         desenhar_tela(tela, passaros, canos, chao, pontos)
 
 
 
+
 if __name__ == '__main__':
-    main()
+    tela = pygame.display.set_mode((TELA_LARGURA, TELA_ALTURA))
+
+    while True:
+        tela_inicio(tela)
+        main()
