@@ -1,13 +1,14 @@
 # 🐦 Flappy Bird em Python
 
+![Flappy Bird](https://media.giphy.com/media/26gR0FfYhtcoQzPOY/giphy.gif)
+
 Este projeto é uma recriação do clássico jogo **Flappy Bird**, desenvolvido em **Python** utilizando a biblioteca **pygame**. O objetivo é controlar o pássaro e desviar dos canos, acumulando a maior pontuação possível.
 
-![Flappy Bird](https://media.giphy.com/media/26gR0FfYhtcoQzPOY/giphy.gif)
+![image](https://github.com/user-attachments/assets/e2df8d68-17a1-4a6b-b554-613852333a5c)
 
 ## 🎥 Demonstração
 
 ![Demonstração do Jogo](./GameplayFlappyBird-ezgif.com-video-to-gif-converter.gif)
-
 
 ---
 
@@ -25,7 +26,7 @@ Este projeto é uma recriação do clássico jogo **Flappy Bird**, desenvolvido 
 - [Pygame](https://www.pygame.org/news)
 
 ---
-![image](https://github.com/user-attachments/assets/5cfd0bb2-724e-4dc6-97f0-db0fc0bc49f3)
+![image](https://github.com/user-attachments/assets/e1c57a8a-9343-4092-b69e-88608e9979d1)
 
 ## 📦 Instalação
 
